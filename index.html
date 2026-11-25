@@ -69,8 +69,9 @@
   .cd b{display:block;font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:800;color:var(--navy);line-height:1.1}
   .cd small{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
 
-  section.final{align-items:flex-start;padding-top:9vh}
-  .final .card{margin:0}
+  section.final{align-items:flex-start;padding-top:0;min-height:140vh}
+  .final .card{position:sticky;top:5vh}
+  .final .card{margin:0 auto}
   .spacer{height:40vh}
 
   @media (max-width:760px){
@@ -136,6 +137,16 @@
   .btn{color:var(--fg)!important;border-color:var(--fg)!important}
   .btn:hover{background:var(--fg)!important;color:#1d2340!important;text-shadow:none}
   body.dark .btn:hover{color:#06255e!important}
+
+  @media (min-width:761px){
+    html{font-size:clamp(16px,1.1vw,26px)}
+    body{font-size:1.05rem}
+    .card{max-width:clamp(30rem,38vw,44rem)}
+    #welcome{align-items:flex-start;padding-top:30vh}
+    h1{font-size:clamp(3rem,4.6vw,6rem);white-space:nowrap}
+    .names{font-size:clamp(3rem,4.4vw,5.6rem);white-space:nowrap}
+    h2{font-size:clamp(2.1rem,2.6vw,3.4rem)}
+  }
 </style>
 </head>
 <body>
@@ -150,10 +161,10 @@
   <img class="art ph2" data-box="0,0,1680,944" src="assets/land-night.webp" alt="">
   <div id="manu" class="sprite"><img src="assets/manu-body.webp" alt=""><div class="arm"><img src="assets/manu-arm.webp" alt=""></div><img id="hManu" class="head" src="assets/head-m-wave.webp" alt="" style="left:29.57%;top:10.45%;width:47.91%;height:27.03%"><img id="hManuR" class="head" src="assets/head-m-upright.webp" alt="" style="left:28.70%;top:10.45%;width:46.90%;height:27.03%;opacity:0"><img id="hManuL" class="head" src="assets/head-m-left.webp" alt="" style="left:26.96%;top:11.17%;width:43.43%;height:26.31%;opacity:0"></div>
   <div id="planeEmpty" class="sprite"><img src="assets/plane-empty.webp" alt=""></div>
-  <div id="walker" class="sprite"><img src="assets/walker-body.webp" alt=""><img id="hWalk" class="head" src="assets/head-p-walk.webp" alt="" style="left:31.10%;top:-5.14%;width:35.95%;height:28.00%"></div>
+  <div id="walker" class="sprite"><img src="assets/walker-body.webp" alt=""><img id="hWalk" class="head" src="assets/head-p-walk-n.webp" alt="" style="left:31.10%;top:-8.57%;width:35.95%;height:31.05%"></div>
   <div id="hug" class="sprite"><img src="assets/hug-body.webp" alt=""><img id="hHugM" class="head" src="assets/head-m-hug.webp" alt="" style="left:19.86%;top:-5.06%;width:28.13%;height:24.19%"><img id="hHugP" class="head" src="assets/head-p-hug.webp" alt="" style="left:-1.89%;top:3.94%;width:25.04%;height:18.85%"></div>
   <div id="hearts"></div>
-  <div id="plane" class="sprite"><img src="assets/plane-body.webp" alt=""><img id="hPlane2" class="head flip" src="assets/head-p-walk.webp" alt="" style="left:47.62%;top:-11.03%;width:13.87%;height:36.45%;opacity:0"><img id="hPlane" class="head flip" src="assets/head-p-plane.webp" alt="" style="left:48.21%;top:-10.07%;width:13.26%;height:36.45%"></div>
+  <div id="plane" class="sprite"><img src="assets/plane-body.webp" alt=""><img id="hPlane2" class="head flip" src="assets/head-p-walk-n.webp" alt="" style="left:47.62%;top:-12.47%;width:13.87%;height:40.42%;opacity:0"><img id="hPlane" class="head flip" src="assets/head-p-plane-n.webp" alt="" style="left:48.21%;top:-11.51%;width:13.26%;height:41.55%"></div>
 </div>
 
 <main>
@@ -341,11 +352,12 @@ function layout(){
   }
 }
 
-let pT = 0, p = 0, sy = 0, face = -1;
+let pT = 0, p = 0, sy = 0, face = -1, lastT = performance.now();
 function readScroll(){ sy = scrollY; const max = document.documentElement.scrollHeight - innerHeight; pT = max > 0 ? clamp(sy/max) : 0; }
 
 function frame(){
-  p += (pT - p) * .1;
+  const now = performance.now(), dt = Math.min(.1, (now - lastT)/1000); lastT = now;
+  p += (pT - p) * (1 - Math.exp(-dt*7));
   // one landscape: day -> sunset -> night
   const k1 = smooth(.26,.48,p), k2 = smooth(.56,.76,p);
   ph1.forEach(e => e.style.opacity = k1); ph2.forEach(e => e.style.opacity = k2);
@@ -366,7 +378,7 @@ function frame(){
   // moon: pinned to the screen's top-right so it shows on every device, rising over the hills
   const ms = clamp(Math.min(W,H)*.2, 84, 170);
   moon.style.width = ms+"px"; moon.style.height = ms+"px";
-  const mUp = smooth(.5,.8,p), mTop = Math.max(H*.07, 20), mLow = oy + 560*sc;
+  const mUp = smooth(.5,.8,p), mTop = W/H < 1.1 ? H*.24 : Math.max(H*.07, 20), mLow = oy + 560*sc;
   moon.style.transform = `translate(${W - ms - W*.07}px,${lerp(mLow, mTop, mUp)}px)`;
   moon.style.opacity = smooth(.46,.6,p);
   stars.style.opacity = smooth(.6,.82,p);
