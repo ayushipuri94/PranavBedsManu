@@ -7,9 +7,9 @@
 <meta name="description" content="Welcome aboard! You are invited to the wedding of Pranav & Manu · 22–24 January 2027 · Suraburdi Meadows, Nagpur">
 <meta property="og:title" content="Welcome aboard! Pranav & Manu are getting married">
 <meta property="og:description" content="22–24 January 2027 · Suraburdi Meadows, Nagpur. Tap to board.">
-<meta property="og:image" content="assets/bg-day.webp?v=1795657684">
-<meta name="theme-color" content="#57b4fb">
-<link rel="preload" as="image" href="assets/bg-day.webp?v=1795657684">
+<meta property="og:image" content="assets/bg-day.webp?v=1795661626">
+<meta name="theme-color" content="#a9d8f5">
+<link rel="preload" as="image" href="assets/bg-day.webp?v=1795661626">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Montserrat:wght@500;600;700&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
@@ -88,7 +88,11 @@
     .sway,.twinkle,.prop,.flutter,.hint{animation:none}
   }
   
-  #stage{position:fixed;inset:0;overflow:hidden;z-index:0;background:#57b4fb}
+  #stage{position:fixed;inset:0;overflow:hidden;z-index:0;background:#a9d8f5}
+  #stage .art:not(#sun):not(#moon), #clouds{filter:saturate(.72) brightness(1.06)}
+  #stage .art.ph2, #clouds img.ph2{filter:saturate(.75) brightness(1.45) hue-rotate(12deg)}
+  #stage .art.ph1, #clouds img.ph1{filter:saturate(.8) brightness(1.1)}
+  #sun{filter:saturate(.65) brightness(1.08)!important}
   .art{position:absolute;display:block;max-width:none;pointer-events:none;will-change:opacity,transform}
   .ph1,.ph2{opacity:0}
   #moon{position:absolute;left:0;top:0;opacity:0;pointer-events:none;will-change:transform,opacity;filter:drop-shadow(0 0 18px rgba(255,244,200,.55))}
@@ -118,7 +122,8 @@
   .sprite img.prop.slow{animation-duration:1.6s}
   @keyframes spin{to{transform:rotate(-360deg)}}
   @media (prefers-reduced-motion:reduce){.sprite img.prop{animation-duration:3s}}
-  #walker > img:first-child,#plane > img:first-child{position:relative;z-index:2}
+  #walker > img.leg{position:absolute;inset:0;width:100%;height:100%;z-index:1;transform-origin:47.8% 53.1%}
+  #walker > img:nth-child(3),#plane > img:first-child{position:absolute;inset:0;width:100%;height:100%;z-index:2}
   #walker img.head,#plane img.head{z-index:1}
   .sprite img.head{position:absolute;display:block;max-width:none;transform-origin:50% 90%;filter:drop-shadow(0 2px 3px rgba(0,0,0,.25))}
   .sprite img.head.flip{transform:scaleX(-1)}
@@ -173,17 +178,17 @@
 
 <div id="stage" aria-hidden="true">
   <div id="stars"></div>
-  <img id="sun" class="art" data-box="1349,0,283,214" src="assets/sun.webp?v=1795657684" alt="">
-  <img id="moon" src="assets/moon.webp?v=1795657684" alt="">
+  <img id="sun" class="art" data-box="1349,0,283,214" src="assets/sun.webp?v=1795661626" alt="">
+  <img id="moon" src="assets/moon.webp?v=1795661626" alt="">
   <div id="clouds"></div>
-  <img class="art" data-box="0,0,1680,944" src="assets/land-day.webp?v=1795657684" alt="">
-  <img class="art ph1" data-box="0,0,1680,944" src="assets/land-sunset.webp?v=1795657684" alt="">
-  <img class="art ph2" data-box="0,0,1680,944" src="assets/land-night.webp?v=1795657684" alt="">
-<div id="plane" class="sprite"><img src="assets/plane-body.webp?v=1795657684" alt=""><div class="propwrap" style="left:-3.333%;top:-1.679%;width:35.714%;height:71.942%"><img class="prop" src="assets/propeller.webp?v=1795657684" alt=""></div><img id="hPlane2" class="head flip" src="assets/head-p-walk-n.webp?v=1795657684" alt="" style="left:46.90%;top:-9.11%;width:13.87%;height:40.80%;opacity:0"><img id="hPlane" class="head flip" src="assets/head-p-plane-n.webp?v=1795657684" alt="" style="left:47.62%;top:-8.15%;width:13.26%;height:40.79%"></div>
-  <div id="manu" class="sprite"><img src="assets/manu-body.webp?v=1795657684" alt=""><div class="arm"><img src="assets/manu-arm.webp?v=1795657684" alt=""></div><img id="hManu" class="head" src="assets/head-m-wave.webp?v=1795657684" alt="" style="left:29.57%;top:10.45%;width:47.91%;height:27.03%"><img id="hManuR" class="head" src="assets/head-m-upright.webp?v=1795657684" alt="" style="left:28.70%;top:10.45%;width:46.90%;height:27.03%;opacity:0"><img id="hManuL" class="head" src="assets/head-m-left.webp?v=1795657684" alt="" style="left:26.96%;top:11.17%;width:43.43%;height:26.31%;opacity:0"></div>
-  <div id="planeEmpty" class="sprite"><img src="assets/plane-empty.webp?v=1795657684" alt=""><div class="propwrap" style="left:-3.333%;top:-1.679%;width:35.714%;height:71.942%"><img class="prop slow" src="assets/propeller.webp?v=1795657684" alt=""></div></div>
-  <div id="walker" class="sprite"><img src="assets/walker-body.webp?v=1795657684" alt=""><img id="hWalk" class="head" src="assets/head-p-walk-n.webp?v=1795657684" alt="" style="left:33.97%;top:-7.43%;width:35.95%;height:31.34%"></div>
-  <div id="hug" class="sprite"><img src="assets/hug-body.webp?v=1795657684" alt=""><img id="hHugM" class="head" src="assets/head-m-hug.webp?v=1795657684" alt="" style="left:19.86%;top:-5.06%;width:28.13%;height:24.19%"><img id="hHugP" class="head" src="assets/head-p-hug.webp?v=1795657684" alt="" style="left:-1.89%;top:3.94%;width:25.04%;height:18.85%"></div>
+  <img class="art" data-box="0,0,1680,944" src="assets/land-day.webp?v=1795661626" alt="">
+  <img class="art ph1" data-box="0,0,1680,944" src="assets/land-sunset.webp?v=1795661626" alt="">
+  <img class="art ph2" data-box="0,0,1680,944" src="assets/land-night.webp?v=1795661626" alt="">
+<div id="plane" class="sprite"><img src="assets/plane-body.webp?v=1795661626" alt=""><div class="propwrap" style="left:-3.333%;top:-1.679%;width:35.714%;height:71.942%"><img class="prop" src="assets/propeller.webp?v=1795661626" alt=""></div><img id="hPlane2" class="head flip" src="assets/head-p-walk-n.webp?v=1795661626" alt="" style="left:46.90%;top:-9.11%;width:13.87%;height:40.80%;opacity:0"><img id="hPlane" class="head flip" src="assets/head-p-plane-n.webp?v=1795661626" alt="" style="left:47.62%;top:-8.15%;width:13.26%;height:40.79%"></div>
+  <div id="manu" class="sprite"><img src="assets/manu-body.webp?v=1795661626" alt=""><div class="arm"><img src="assets/manu-arm.webp?v=1795661626" alt=""></div><img id="hManu" class="head" src="assets/head-m-wave.webp?v=1795661626" alt="" style="left:29.57%;top:10.45%;width:47.91%;height:27.03%"><img id="hManuR" class="head" src="assets/head-m-upright.webp?v=1795661626" alt="" style="left:28.70%;top:10.45%;width:46.90%;height:27.03%;opacity:0"><img id="hManuL" class="head" src="assets/head-m-left.webp?v=1795661626" alt="" style="left:26.96%;top:11.17%;width:43.43%;height:26.31%;opacity:0"></div>
+  <div id="planeEmpty" class="sprite"><img src="assets/plane-empty.webp?v=1795661626" alt=""><div class="propwrap" style="left:-3.333%;top:-1.679%;width:35.714%;height:71.942%"><img class="prop slow" src="assets/propeller.webp?v=1795661626" alt=""></div></div>
+  <div id="walker" class="sprite"><img class="leg" id="legB" src="assets/walker-legB.webp?v=1795661626" alt=""><img class="leg" id="legF" src="assets/walker-legF.webp?v=1795661626" alt=""><img src="assets/walker-torso.webp?v=1795661626" alt=""><img id="hWalk" class="head" src="assets/head-p-walk-n.webp?v=1795661626" alt="" style="left:33.97%;top:-7.43%;width:35.95%;height:31.34%"></div>
+  <div id="hug" class="sprite"><img src="assets/hug-body.webp?v=1795661626" alt=""><img id="hHugM" class="head" src="assets/head-m-hug.webp?v=1795661626" alt="" style="left:19.86%;top:-5.06%;width:28.13%;height:24.19%"><img id="hHugP" class="head" src="assets/head-p-hug.webp?v=1795661626" alt="" style="left:-1.89%;top:3.94%;width:25.04%;height:18.85%"></div>
   <div id="hearts"></div>
 </div>
 
@@ -308,13 +313,13 @@ const CLOUD_ART = { 0:[990,265], 2:[369,136], 3:[726,150] };
 const CLOUDS = [[0,1185,210,1,1,1],[2,464,471,1,1,.7],[3,1316,489,.9,1,.8],[0,-150,330,.6,-1,.55],[2,900,150,.8,-1,.9],[3,120,540,.7,1,.6],[2,1500,90,.55,1,1.1]];
 const cloudEls = CLOUDS.map(([i]) => {
   const d = document.createElement("div"); d.className = "cloud";
-  d.innerHTML = `<img src="assets/cloud${i}-day.webp?v=1795657684" alt=""><img class="ph1" src="assets/cloud${i}-sunset.webp?v=1795657684" alt=""><img class="ph2" src="assets/cloud${i}-night.webp?v=1795657684" alt="">`;
+  d.innerHTML = `<img src="assets/cloud${i}-day.webp?v=1795661626" alt=""><img class="ph1" src="assets/cloud${i}-sunset.webp?v=1795661626" alt=""><img class="ph2" src="assets/cloud${i}-night.webp?v=1795661626" alt="">`;
   document.getElementById("clouds").appendChild(d); return d;
 });
 const arts = [...document.querySelectorAll(".art")].map(el => ({ el, box: el.dataset.box.split(",").map(Number) }));
 const ph1 = [...document.querySelectorAll(".ph1")], ph2 = [...document.querySelectorAll(".ph2")];
 const sun = $("sun"), moon = $("moon"), stars = $("stars"), stage = $("stage");
-const SKY = { day:["#57b4fb","#7cc3fb","#b4dcf8"], sunset:["#212e6a","#6a4a86","#f2875a"], night:["#06255e","#0c2f6c","#1d4a92"] };
+const SKY = { day:["#a9d8f5","#c4e5f8","#e4f3fb"], sunset:["#b8a9dc","#e7b8cf","#f8cdb4"], night:["#5b6aa8","#7a86bf","#9ea6d3"] };
 function hex(c){ return [1,3,5].map(i=>parseInt(c.slice(i,i+2),16)); }
 function mixc(a,b,t){ const x=hex(a), y=hex(b); return "rgb("+x.map((v,i)=>Math.round(v+(y[i]-v)*t)).join(",")+")"; }
 function mix3(k1,k2,i){ const a = mixc(SKY.day[i], SKY.sunset[i], k1); const b = mixc(SKY.sunset[i], SKY.night[i], k2);
@@ -394,7 +399,7 @@ function frame(){
     d.style.transform = `translate(${cx}px,${oy + y*sc}px) scaleX(${flip})`;
   });
   sun.style.transform = `translateY(${smooth(.18,.56,p)*720*sc}px)`;
-  sun.style.filter = `sepia(${k1}) saturate(${1+k1*1.5}) hue-rotate(${-25*k1}deg)`;
+  sun.style.filter = `saturate(${(.65+k1*.5).toFixed(2)}) brightness(1.08) hue-rotate(${-25*k1}deg)`;
   // moon: pinned to the screen's top-right so it shows on every device, rising over the hills
   const ms = clamp(Math.min(W,H)*.2, 84, 170);
   moon.style.width = ms+"px"; moon.style.height = ms+"px";
@@ -403,7 +408,7 @@ function frame(){
   moon.style.opacity = smooth(.46,.6,p);
   stars.style.opacity = smooth(.6,.82,p);
   const night = k2, dusk = k1;
-  const bright = lerp(1, .78, Math.max(dusk*.4, night));
+  const bright = lerp(1, .9, Math.max(dusk*.4, night));
   const filt = `brightness(${bright.toFixed(3)}) saturate(${lerp(1,.88,night).toFixed(3)})`;
   document.body.classList.toggle("dark", p > .36);
   // Manu: waving arm follows the scroll, gentle sway
@@ -458,6 +463,8 @@ function frame(){
   const step = walkT > 0 && walkT < 1 ? sy/18 : 0;
   walker.style.transform = `translate(${wx}px,${feetY - wh - Math.abs(Math.sin(step))*5}px) rotate(${Math.sin(step)*2.5}deg)`;
   walker.style.opacity = hop * (1 - hugT); walker.style.filter = filt;
+  { const sw = (walkT > 0 && walkT < 1) ? Math.sin(sy/22)*11 : 0;
+    $("legF").style.transform = `rotate(${sw.toFixed(2)}deg)`; $("legB").style.transform = `rotate(${(-sw).toFixed(2)}deg)`; }
   manu.style.opacity = 1 - hugT;
   const hw = hug.offsetWidth, hh = hug.offsetHeight;
   hug.style.transform = `translate(${mx + MANU.w*sc*.6 - hw*.62}px,${feetY - hh}px)`;
