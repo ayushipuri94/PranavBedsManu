@@ -154,9 +154,20 @@
     .names{font-size:clamp(3rem,4.4vw,5.6rem);white-space:nowrap}
     h2{font-size:clamp(2.1rem,2.6vw,3.4rem)}
   }
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:center;padding:.7rem .6rem}
+.nav .in{display:flex;gap:.2rem;background:rgba(255,253,247,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-radius:999px;padding:.3rem;box-shadow:0 6px 24px rgba(20,40,80,.15);overflow-x:auto;max-width:100%;scrollbar-width:none}
+.nav .in::-webkit-scrollbar{display:none}
+.nav a{white-space:nowrap;text-decoration:none;color:#141a33;font-weight:600;font-size:.82rem;padding:.5rem .9rem;border-radius:999px}
+.nav a:hover{background:rgba(31,42,68,.08)}
+.nav a.on{background:#1f2a44;color:#fff}
+@media (max-width:640px){.nav a{font-size:.78rem;padding:.45rem .7rem}.wrap{padding-top:5.5rem}}
+
 </style>
 </head>
-<body>
+ <body>
+<nav class="nav"><div class="in"><a href="index.html" class=on>Invite</a><a href="story.html">Story</a><a href="dress.html">Dress code</a><a href="travel.html">Travel</a><a href="rsvp.html">RSVP</a></div></nav>
 
 <div id="stage" aria-hidden="true">
   <div id="stars"></div>
