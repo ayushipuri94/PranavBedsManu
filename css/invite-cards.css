@@ -1,0 +1,53 @@
+/* Invitation page: text cards floating over the scene (no box, glowing text). */
+body{--fg:var(--day-fg);--fg2:var(--day-fg2);--acc:var(--day-acc);--glow:var(--day-glow)}
+body.dark{--fg:var(--night-fg);--fg2:var(--night-fg2);--acc:var(--night-acc);--glow:var(--night-glow)}
+
+.card{padding:2.4rem 2.4rem;max-width:460px;width:100%;position:relative;text-align:center;
+  color:var(--fg);text-shadow:0 0 6px var(--glow),0 0 14px var(--glow),0 0 28px var(--glow),0 1px 2px var(--glow);
+  opacity:0;transform:translateY(36px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.8,.2,1),color .8s}
+.card.on{opacity:1;transform:none}
+.card h1,.card h2,.card .meta,.card .names{color:var(--fg)}
+.card .lead,.card .with{color:var(--fg2)}
+
+.tag{display:block;font-size:.82rem;letter-spacing:.2em;font-weight:700;text-transform:uppercase;margin-bottom:.9rem}
+.tag-gap{margin-top:.9rem}
+.card .tag,.card .hint,.card .orn,.card .hindi{color:var(--acc)}
+
+/* the couple + parents (captain's note) */
+.person{margin:.6rem 0}
+.person .nm{font-family:var(--font-display);font-style:italic;font-weight:700;font-size:2rem;color:var(--fg);line-height:1.3}
+.person .par{color:var(--fg2);font-size:1.02rem;font-weight:500}
+.with{font-weight:600;margin:.1rem 0;letter-spacing:.1em}
+
+/* boarding pass (one per day) */
+.pass{display:flex;margin-top:1rem;text-align:left;border:1px solid color-mix(in srgb,var(--fg) 35%,transparent)}
+.pass .stub{color:var(--fg);padding:1rem .9rem;display:flex;flex-direction:column;justify-content:center;align-items:center;min-width:86px;
+  position:relative;text-align:center;border-right:1px dashed color-mix(in srgb,var(--fg) 45%,transparent)}
+.pass .stub .d{font-family:var(--font-display);font-size:2.3rem;font-weight:800;line-height:1}
+.pass .stub .m{font-size:.8rem;font-weight:700;letter-spacing:.18em}
+.pass .stub .w{font-size:.82rem;font-weight:500;opacity:.85;margin-top:.15rem}
+.pass .body{padding:.8rem 1.1rem;flex:1}
+.pass .row{display:flex;justify-content:space-between;align-items:baseline;gap:.8rem;padding:.4rem 0}
+.pass .row + .row{border-top:1px dashed color-mix(in srgb,var(--fg) 30%,transparent)}
+.pass .ev{font-weight:700;font-size:1.15rem;color:var(--fg)}
+.pass .t{letter-spacing:.04em;color:var(--acc);white-space:nowrap;font-weight:700;font-size:1.05rem}
+.pass .small{font-size:1rem;color:var(--fg2);font-weight:500}
+
+/* directions button */
+.btn{display:inline-block;margin-top:1.2rem;padding:.65rem 1.6rem;border:1px solid var(--fg);color:var(--fg);text-decoration:none;
+  letter-spacing:.12em;text-transform:uppercase;font-size:.9rem;font-weight:700;transition:all .25s}
+.btn:hover{background:var(--fg);color:#1d2340;text-shadow:none}
+body.dark .btn:hover{color:#06255e}
+
+/* countdown */
+.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-top:.8rem}
+.cd{padding:.7rem .2rem;border:1px solid color-mix(in srgb,var(--fg) 35%,transparent)}
+.cd b{display:block;font-family:var(--font-display);font-size:2.1rem;font-weight:800;color:var(--fg);line-height:1.1}
+.cd small{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)}
+
+@media (max-width:760px){
+  .card{padding:1.6rem 1.4rem;max-width:none}
+  .person .nm{font-size:1.75rem}
+}
+@media (min-width:761px){ .card{max-width:clamp(30rem,38vw,44rem)} }
+@media (prefers-reduced-motion:reduce){ .card{transition:none;opacity:1;transform:none} }

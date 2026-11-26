@@ -1,0 +1,33 @@
+/* Characters and props on the stage. Parts are described in js/config/scene.js. */
+.sprite{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform,filter;pointer-events:none}
+.sprite img{display:block;width:100%;height:100%}
+.sprite img.fill{position:absolute;inset:0}
+.sprite .z1{z-index:1}
+.sprite .z2{z-index:2}
+#plane,#planeEmpty{transform-origin:50% 50%}
+#manu{will-change:transform}
+#manu .arm{position:absolute;inset:0}
+
+/* sticker heads */
+.sprite img.head{position:absolute;display:block;max-width:none;transform-origin:50% 90%;filter:drop-shadow(0 2px 3px rgba(0,0,0,.25))}
+.sprite img.head.flip{transform:scaleX(-1)}
+
+/* walking legs swing around the hip */
+#walker img.leg{z-index:1;transform-origin:47.8% 53.1%}
+
+/* propeller: the engine face is seen at an angle, so the disc is an ellipse */
+.propwrap{position:absolute}
+.propwrap .disc{position:absolute;inset:0;transform:rotate(5deg) scaleX(.53);transform-origin:50% 50%}
+.propwrap .disc::before{content:"";position:absolute;inset:2%;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,0) 25%,rgba(120,80,40,.16) 62%,rgba(255,255,255,0) 72%)}
+.sprite img.prop{position:absolute;inset:0;animation:spin .28s linear infinite;transform-origin:50% 50%}
+.sprite img.prop.slow{animation-duration:1.6s}
+.sprite img.spinner{position:absolute;display:block;max-width:none}
+@keyframes spin{to{transform:rotate(-360deg)}}
+
+/* hearts after the hug */
+.heart{position:absolute;width:var(--heart-size);height:var(--heart-size);opacity:0;pointer-events:none}
+.heart.go{animation:rise 3s ease-out infinite}
+@keyframes rise{0%{transform:translateY(0) scale(.4);opacity:0}20%{opacity:.95}100%{transform:translateY(-110px) scale(1.1);opacity:0}}
+
+@media (prefers-reduced-motion:reduce){ .sprite img.prop{animation-duration:3s} }

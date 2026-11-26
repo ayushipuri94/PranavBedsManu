@@ -1,38 +1,24 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RSVP · Pranav & Manu</title><meta name="theme-color" content="#a9d8f5">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=1795661626"></head><body><nav class="nav"><div class="in"><a href="index.html">Invite</a><a href="story.html">Story</a><a href="events.html">Events</a><a href="travel.html">Travel</a><a href="rsvp.html" class=on>RSVP</a></div></nav><main class="wrap"><div class="hero"><div class="kick">Check-in counter</div><h1>RSVP</h1><p class="sub">Kindly respond by [date]</p></div>
-<style>form .row{margin-bottom:1rem}label.t{display:block;font-weight:700;font-size:.9rem;margin-bottom:.35rem}
-input[type=text],input[type=number],textarea,select{width:100%;padding:.7rem .8rem;border:1.5px solid #c9d3e6;border-radius:10px;font:inherit;background:#fff}
-.chk{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.4rem}.chk label{display:flex;gap:.5rem;align-items:center;font-weight:500;background:#fff;border:1.5px solid #c9d3e6;border-radius:10px;padding:.55rem .7rem;cursor:pointer}
-.yn{display:flex;gap:.6rem}.yn label{flex:1;text-align:center;border:1.5px solid #c9d3e6;border-radius:10px;padding:.7rem;cursor:pointer;font-weight:700;background:#fff}
-.yn input{display:none}.yn input:checked+span{color:#fff}.yn label:has(input:checked){background:var(--navy);border-color:var(--navy);color:#fff}</style>
-<form class="card" id="f">
- <div class="row"><label class="t">Your name(s)</label><input type="text" name="name" required placeholder="e.g. Riya &amp; Arjun Sharma"></div>
- <div class="row"><label class="t">Will you be boarding?</label><div class="yn">
-   <label><input type="radio" name="coming" value="Yes, joyfully!" required><span>Yes, joyfully!</span></label>
-   <label><input type="radio" name="coming" value="Sadly, can't make it"><span>Sadly, can't make it</span></label></div></div>
- <div class="row"><label class="t">Number of guests</label><input type="number" name="guests" min="1" max="10" value="1"></div>
- <div class="row"><label class="t">Which events?</label><div class="chk">
-   <label><input type="checkbox" name="ev" value="Welcome Dinner" checked> Welcome Dinner</label>
-   <label><input type="checkbox" name="ev" value="After Party" checked> After Party</label>
-   <label><input type="checkbox" name="ev" value="Carnival &amp; Pool Party" checked> Carnival &amp; Pool Party</label>
-   <label><input type="checkbox" name="ev" value="Reception" checked> Reception</label>
-   <label><input type="checkbox" name="ev" value="Baraat &amp; Phere" checked> Baraat &amp; Phere</label></div></div>
- <div class="row"><label class="t">Dietary needs (optional)</label><input type="text" name="diet" placeholder="Vegetarian, Jain, allergies…"></div>
- <div class="row"><label class="t">A note for the couple (optional)</label><textarea name="msg" rows="3"></textarea></div>
- <button class="btn" type="submit" id="send">Send RSVP on WhatsApp</button>
- <p class="note" style="margin-top:.6rem">This opens WhatsApp with your answers filled in. Just hit send.</p>
- <div class="todo" id="cfg">Set the WhatsApp number that should receive RSVPs (in rsvp.html, <code>RSVP_WHATSAPP</code>).</div>
-</form>
-<script>
-const RSVP_WHATSAPP = "";   // e.g. "919812345678" (country code + number, no +)
-if (RSVP_WHATSAPP) document.getElementById("cfg").remove();
-document.getElementById("f").addEventListener("submit", e => {
-  e.preventDefault(); const d = new FormData(e.target);
-  const txt = `RSVP · Pranav & Manu\nName: ${d.get("name")}\nComing: ${d.get("coming")}\nGuests: ${d.get("guests")}\nEvents: ${d.getAll("ev").join(", ")||"-"}\nDiet: ${d.get("diet")||"-"}\nNote: ${d.get("msg")||"-"}`;
-  if (!RSVP_WHATSAPP) { document.getElementById("send").textContent = "RSVP opens soon"; return; }
-  window.open(`https://wa.me/${RSVP_WHATSAPP}?text=${encodeURIComponent(txt)}`, "_blank");
-});
-</script></main></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- meta:start (generated from js/config/wedding.js by tools/release.mjs) -->
+<title>RSVP · Pranav &amp; Manu</title>
+<meta name="description" content="Welcome aboard! You are invited to the wedding of Pranav &amp; Manu · 22–24 January 2027 · Suraburdi Meadows, Nagpur">
+<!-- meta:end -->
+<meta name="theme-color" content="#a9d8f5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Montserrat:wght@500;600;700&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css?v=1795676983">
+<link rel="stylesheet" href="css/page-base.css?v=1795676983">
+<link rel="stylesheet" href="css/page-rsvp.css?v=1795676983">
+<link rel="stylesheet" href="css/nav.css?v=1795676983">
+</head>
+<body class="page">
+<div data-nav></div>
+<main class="wrap" id="content"></main>
+<script type="module" src="js/pages/rsvp.js?v=1795676983"></script>
+</body>
+</html>

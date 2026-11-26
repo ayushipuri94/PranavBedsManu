@@ -1,0 +1,25 @@
+/* Design tokens: colours, fonts and shared sizes. Change the look here. */
+:root{
+  --font-body:'Montserrat',system-ui,sans-serif;
+  --font-display:'Playfair Display',serif;
+  --font-hindi:'Tiro Devanagari Hindi',serif;
+  /* invitation (index.html) */
+  --ink:#2a2f45; --muted:#6f6a7a; --gold:#b8913f; --gold-l:#e6cf98; --rose:#b56576; --navy:#1f2a44;
+  --card:rgba(255,251,244,.9);
+  /* menu */
+  --nav-ink:#141a33; --nav-active:#1f2a44; --nav-bg:rgba(255,253,247,.82);
+  /* text over the scene: day / night */
+  --day-fg:#141a33; --day-fg2:#262d4f; --day-acc:#6b4700; --day-glow:rgba(255,255,255,.85);
+  --night-fg:#fff8ec; --night-fg2:#f1e6d2; --night-acc:#f3d48a; --night-glow:rgba(6,16,50,.85);
+  /* sky + stars */
+  --sky:#a9d8f5; --star:#fff8d8;
+  /* hearts */
+  --heart-size:22px;
+}
+/* content pages (story, events, travel, rsvp) */
+body.page{
+  --ink:#141a33; --muted:#3a4166; --gold:#b07a5a; --navy:#4a5788; --card:rgba(255,253,247,.88);
+  --nav-ink:var(--ink); --nav-active:var(--navy);
+  --page-sky:linear-gradient(#a9d8f5 0%,#c9e7f8 45%,#fdf1e6 80%);
+  --meadow:url("../assets/scene/land-day.webp?v=1795676983");
+}

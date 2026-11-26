@@ -1,0 +1,9 @@
+/* Top menu (rendered by js/components/nav.js). */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:center;padding:.7rem .6rem}
+.nav .in{display:flex;gap:.2rem;background:var(--nav-bg);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-radius:999px;padding:.3rem;box-shadow:0 6px 24px rgba(20,40,80,.15);overflow-x:auto;max-width:100%;scrollbar-width:none}
+.nav .in::-webkit-scrollbar{display:none}
+.nav a{white-space:nowrap;text-decoration:none;color:var(--nav-ink);font-weight:600;font-size:.82rem;padding:.5rem .9rem;border-radius:999px}
+.nav a:hover{background:rgba(31,42,68,.08)}
+.nav a.on{background:var(--nav-active);color:#fff}
+@media (max-width:640px){.nav a{font-size:.78rem;padding:.45rem .7rem}.wrap{padding-top:5.5rem}}

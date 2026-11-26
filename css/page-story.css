@@ -1,0 +1,9 @@
+/* Story page: dashed flight-path timeline. */
+.tl{position:relative;padding-left:1.6rem}
+.tl::before{content:"";position:absolute;left:.45rem;top:.4rem;bottom:.4rem;width:2px;background:repeating-linear-gradient(var(--navy) 0 6px,transparent 6px 12px)}
+.tl .card{position:relative}
+.tl .card::before{content:"✈";position:absolute;left:-1.75rem;top:1.5rem;font-size:1rem;color:var(--navy);background:#e8f4ff;border-radius:50%;
+  width:1.6rem;height:1.6rem;display:grid;place-items:center}
+.when{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+.ph{aspect-ratio:16/9;max-height:240px;border-radius:12px;background:#dfe8f2;display:grid;place-items:center;color:#7b88a6;font-size:.85rem;margin-top:.8rem}
+img.ph{width:100%;object-fit:cover;display:block}

@@ -1,0 +1,12 @@
+/* RSVP page: form controls. */
+form .row{margin-bottom:1rem}
+label.t{display:block;font-weight:700;font-size:.9rem;margin-bottom:.35rem}
+input[type=text],input[type=number],textarea,select{width:100%;padding:.7rem .8rem;border:1.5px solid #c9d3e6;border-radius:10px;font:inherit;background:#fff}
+.chk{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.4rem}
+.chk label{display:flex;gap:.5rem;align-items:center;font-weight:500;background:#fff;border:1.5px solid #c9d3e6;border-radius:10px;padding:.55rem .7rem;cursor:pointer}
+.yn{display:flex;gap:.6rem}
+.yn label{flex:1;text-align:center;border:1.5px solid #c9d3e6;border-radius:10px;padding:.7rem;cursor:pointer;font-weight:700;background:#fff}
+.yn input{display:none}
+.yn input:checked+span{color:#fff}
+.yn label:has(input:checked){background:var(--navy);border-color:var(--navy);color:#fff}
+.help{margin-top:.6rem}
